@@ -1,1 +1,39 @@
-{}
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Coco",
+      "description": "Un gars sympa",
+      "admin": true
+    },
+    {
+      "id": "2",
+      "name": "Jaco",
+      "description": "Un type cool",
+      "admin": true
+    }
+  ],
+  "todos": [
+    {
+      "id": "1",
+      "txt": "Apprendre Java",
+      "done": false,
+      "editable": false,
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "txt": "Apprendre Angular",
+      "done": false,
+      "editable": false,
+      "userId": "2"
+    },
+    {
+      "id": "3",
+      "txt": "Apprendre JavaScript",
+      "done": false,
+      "editable": false,
+      "userId": "1"
+    }
+  ]
+}
