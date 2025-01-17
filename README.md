@@ -60,3 +60,26 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Fonctionnement général
+ 
+1. l'accès à l'application s'effectue directement depuis la page d'authentification.
+ 
+- 2 types d'utilisateurs peuvent accéder à l'application.
+ 
+--> User : il peut afficher uniquement à ses tâches, les valider et les supprimer
+--> Admin : peut accéder à l'ensemble des tâches des utilisateurs, les supprimer ou en ajouter, il peut tout voir  tel big brother :D
+ 
+2 Connexion :
+ 
+- un utilisateur se connecte et arrive directement à la mire d'authentification.
+ 
+- Si ce dernier n'est pas connu du système, l'aventure s'arrête ici et un message apparait:
+"utilisateur inconnu"
+ 
+- l'utilisateur est connu, il est connecté, la suite au point suivant
+ 
+ 
+3. Une fois connexion établie
+ 
+Un message de bienvenue avec le nom  de l'utilisateur apparait avec les options qui lui sont propres
