@@ -1,3 +1,6 @@
+# Schéma
+![image](https://github.com/user-attachments/assets/b6aec0b4-f393-4f99-ba41-e034d8ebc2a1)
+
 # Project
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
