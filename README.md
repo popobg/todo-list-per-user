@@ -1,5 +1,5 @@
 # Schéma
-`![description](images-readme/schema.png`
+`![Communication inter-composant](images-readme/schema.png)`
 
 # Project
 
