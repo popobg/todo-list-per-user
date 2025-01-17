@@ -1,5 +1,5 @@
 # Schéma
-`![description](images-readme/schema.png` ?
+`![description](images-readme/schema.png`
 
 # Project
 
