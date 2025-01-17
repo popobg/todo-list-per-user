@@ -8,7 +8,6 @@ import { User, Users } from '../models/user';
 })
 export class UserService {
     private readonly http = inject(HttpClient);
-    private readonly userUrl = 'http://localhost:3000/users';
 
     findAll(): Observable<Users> {
         return this.http.get<Users>('http://localhost:3000/users');
