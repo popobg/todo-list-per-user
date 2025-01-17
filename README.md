@@ -1,5 +1,5 @@
 # Schéma
-C:\Users\XenceMaster\Documents\Code\Projet\Angular\image-readMe\schema.png
+`![description](images-readme/schema.png` ?
 
 # Project
 
