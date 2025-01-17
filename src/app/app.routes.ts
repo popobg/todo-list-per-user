@@ -10,6 +10,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'todos', component: TodoComponent },
   { path: 'todos/:id', component: TodoDetailsComponent },
+  { path: 'todos/user/:userId', component: TodoComponent},
   { path: 'users', component: UserListComponent },
   { path: 'users/new', component: UserFormComponent },
   { path: 'users/:id', component: UserDetailsComponent },
