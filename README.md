@@ -5,6 +5,10 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
 
+## Participants:
+
+Pauline BOUYSSOU, Hugo DESAIN, Mathis BASIER, Maxence OGIER, Loïc MAYRAN, Joseph BROU.
+
 ## Development server
 
 To start a local development server, run:
@@ -83,3 +87,5 @@ For more information on using the Angular CLI, including detailed command refere
 3. Une fois connexion établie
  
 Un message de bienvenue avec le nom  de l'utilisateur apparait avec les options qui lui sont propres
+
+
