@@ -3,6 +3,7 @@ export interface Todo {
     txt: string;
     done: boolean;
     editable: boolean;
+    userId: string;
 }
-  
+
 export type Todos = Todo[];

@@ -4,5 +4,5 @@ export interface User {
     description: string;
     admin?: boolean;
 }
-    
+
 export type Users = User[];
