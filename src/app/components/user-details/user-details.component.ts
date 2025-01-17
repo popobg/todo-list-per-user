@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 
 @Component({
   selector: 'app-user-details',

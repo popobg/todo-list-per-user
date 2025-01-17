@@ -4,18 +4,18 @@ import { Observable } from 'rxjs';
 import { User, Users } from '../models/user';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class UserService {
-    private readonly http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
-    findAll(): Observable<Users> {
-        return this.http.get<Users>('http://localhost:3000/users');
-    }
+  findAll(): Observable<Users> {
+    return this.http.get<Users>('http://localhost:3000/users');
+  }
 
-    findById(id: string): Observable<User> {
-        return this.http.get<User>(`http://localhost:3000/users/${id}`);
-    }
+  findById(id: string): Observable<User> {
+    return this.http.get<User>(`http://localhost:3000/users/${id}`);
+  }
 
     findByName(name: string): Observable<Users> {
         return this.http.get<Users>(`http://localhost:3000/users?name=${name}`);

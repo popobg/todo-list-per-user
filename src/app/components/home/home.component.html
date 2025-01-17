@@ -1,2 +1,12 @@
 <h1>Bienvenue sur Todo-User !</h1>
-<app-user-form></app-user-form>
+<h2>Connection :</h2>
+<form (submit)="onSubmit()">
+  <div>
+    <label for="name">Nom d'utilisateur:</label>
+    <br />
+    <input type="text" name="name" [(ngModel)]="name" required />
+  </div>
+  <br />
+  <button type="submit">Se connecter</button>
+</form>
+{{ errorMessage }}

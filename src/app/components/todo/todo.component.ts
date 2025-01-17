@@ -2,7 +2,6 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Todo, Todos } from '../../models/todo';
 import { TodoService } from '../../services/todo.service';
 import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -73,16 +72,12 @@ export class TodoComponent implements OnInit {
   }
 
   // Méthode pour créer une nouvelle tâche
-  createTodo(event: KeyboardEvent, inputTodo: HTMLInputElement): void {
+  createTodo(event: KeyboardEvent, txt: string): void {
     if (event.key === 'Enter') {
       // Créer la tâche via le service
-      this.todoService.createTodo({ txt: inputTodo.value }, this.currentUserId).subscribe((newTodo) => {
+      this.todoService.createTodo({ txt }, this.currentUserId).subscribe((newTodo) => {
         // Ajouter la nouvelle tâche dans le signal 'todos'
         this.todos.update(todos => [newTodo, ...todos]);
-        
-        // Réinitialiser le champ d'entrée après création
-        inputTodo.value = '';
-        inputTodo.focus();
       });
     }
   }
