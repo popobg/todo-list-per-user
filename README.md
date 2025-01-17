@@ -1,5 +1,5 @@
 # Schéma
-`![Communication inter-composant](images-readme/schema.png)`
+![image](https://github.com/user-attachments/assets/b6aec0b4-f393-4f99-ba41-e034d8ebc2a1)
 
 # Project
 
