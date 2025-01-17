@@ -1,8 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Todo, Todos } from '../../models/todo';
 import { TodoService } from '../../services/todo.service';
-import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
 
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
@@ -52,20 +50,7 @@ export class TodoComponent implements OnInit {
       this.todos.set(data);  // Mettre à jour le signal avec les tâches
     });
   }
-  showTask() {
-    this.showTasks = !this.showTasks;
-  }
   
-  completeTask(id: string) {
-    this.todos.update(todos => {
-      const task = todos.find(t => t.id === id);
-      if (task) task.done = !task.done;
-      return todos;
-    })
-  }
-
-
-
   showTask() {
     this.showTasks = !this.showTasks;
   }
