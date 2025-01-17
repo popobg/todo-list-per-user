@@ -1,1 +1,16 @@
-<p>user-details works!</p>
+<mat-card class="card" appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>Utilisateur</mat-card-title>
+        <mat-card-subtitle>Details</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        Nom: {{user()?.name}} <br>
+        Id: {{user()?.id}} <br>
+        Admin: @if (user()?.admin) {
+            Oui
+        } @else {
+            Non
+        } <br>
+        Description: {{user()?.description}}</mat-card-content>
+</mat-card>
+  
