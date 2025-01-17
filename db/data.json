@@ -1,16 +1,16 @@
 {
     "users" : [
        {
-        "id": "1",
-        "nom": "Coco",
-        "description": "Un gars sympa",
-        "admin": true
+            "id": "1",
+            "nom": "Coco",
+            "description": "Un gars sympa",
+            "admin": true
         },
         {
             "id": "2",
             "nom": "Jaco",
             "description": "Un type cool",
-            "admin": true
+            "admin": false
         }
     ],
     "todos" : [
