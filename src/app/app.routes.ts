@@ -8,20 +8,21 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: 'todos',
-    children: [
-      { path: 'list', component: TodoComponent },
-      { path: 'details/:id', component: TodoDetailsComponent },
-      { path: 'form', component: TodoFormComponent }
-    ]
-  },
-  { path: 'users',
-    children: [
-      { path: 'list', component: UserListComponent },
-      { path: 'details/:id', component: UserDetailsComponent },
-      { path: 'form', component: UserFormComponent }
-    ]
-   }
+    { path: '', component: HomeComponent },
+    {
+        path: 'todos',
+        children: [
+            { path: 'list', component: TodoComponent },
+            { path: 'details/:id', component: TodoDetailsComponent },
+            { path: 'form', component: TodoFormComponent }
+        ]
+    },
+    {
+        path: 'users',
+        children: [
+            { path: 'list', component: UserListComponent },
+            { path: 'details/:id', component: UserDetailsComponent },
+            { path: 'form', component: UserFormComponent }
+        ]
+    }
 ];
