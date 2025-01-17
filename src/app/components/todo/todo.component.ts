@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Todo, Todos } from '../../models/todo';
 import { TodoService } from '../../services/todo.service';
-
+import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -10,8 +10,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-todo',
@@ -37,20 +35,19 @@ import { FormsModule } from '@angular/forms';
   `
 })
 export class TodoComponent implements OnInit {
-  
+  todoService = inject(TodoService);
   todos = signal<Todos>([]);
+  userTodos = signal<Todos>([]);
   txt = signal<string>('');
   showTasks: boolean = false;
-  todoService = inject(TodoService);
-  userTodos = signal<Todos>([]);
-  currentUserId = '1';
-  
+  currentUserId = '1'; // Exemple : Utilisateur connecté avec l'ID '1'
+
   ngOnInit(): void {
     this.todoService.findAll().subscribe((data) => {
       this.todos.set(data);  // Mettre à jour le signal avec les tâches
     });
   }
-  
+
   showTask() {
     this.showTasks = !this.showTasks;
   }
