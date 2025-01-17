@@ -1,5 +1,9 @@
-import { Component, signal } from '@angular/core';
-import { Todos } from '../../models/todo';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { Todo, Todos } from '../../models/todo';
+import { TodoService } from '../../services/todo.service';
+import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterOutlet } from '@angular/router';
+
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -9,6 +13,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-todo',
@@ -21,7 +26,7 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatCheckboxModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
   ],
   templateUrl: './todo.component.html',
   styles: `
@@ -33,26 +38,33 @@ import { FormsModule } from '@angular/forms';
     }
   `
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit {
   
-  todos = signal<Todos>([{
-    id: '1',
-    txt: 'Task 1',
-    done: false,
-    editable: false
-  }, {
-    id: '2',
-    txt: 'Task 2',
-    done: false,
-    editable: false
-  }, {
-    id: '3',
-    txt: 'Task 3',
-    done: false,
-    editable: false
-  }]);
+  todos = signal<Todos>([]);
   txt = signal<string>('');
   showTasks: boolean = false;
+  todoService = inject(TodoService);
+  userTodos = signal<Todos>([]);
+  currentUserId = '1';
+  
+  ngOnInit(): void {
+    this.todoService.findAll().subscribe((data) => {
+      this.todos.set(data);  // Mettre à jour le signal avec les tâches
+    });
+  }
+  showTask() {
+    this.showTasks = !this.showTasks;
+  }
+  
+  completeTask(id: string) {
+    this.todos.update(todos => {
+      const task = todos.find(t => t.id === id);
+      if (task) task.done = !task.done;
+      return todos;
+    })
+  }
+
+
 
   showTask() {
     this.showTasks = !this.showTasks;
@@ -66,22 +78,41 @@ export class TodoComponent {
     })
   }
 
-  removeTask(id: string) {
-    //TODO: implémenter la suppression d'une tâche dans la liste
+  // Charger les tâches par utilisateur
+  loadUserTodos(userId: string): void {
+    this.todoService.findByUserId(userId).subscribe((userTodos) => {
+      this.userTodos.set(userTodos);  // Mettre à jour le signal des tâches utilisateur
+    });
   }
 
-  addTask(txt: string) {
-    if (!txt) return
-    //TODO: implémenter l'ajout d'une tâche dans la liste
-    this.todos.update(todos => {
-      todos.unshift({
-        id: String(todos.length + 1),
-        txt,
-        done: false,
-        editable: false
+  toggleState(todo: Todo) {
+    this.todoService.updateTodo({ ...todo, done: !todo.done });
+  }
+
+  // Méthode pour créer une nouvelle tâche
+  createTodo(event: KeyboardEvent, inputTodo: HTMLInputElement): void {
+    if (event.key === 'Enter') {
+      // Créer la tâche via le service
+      this.todoService.createTodo({ txt: inputTodo.value }, this.currentUserId).subscribe((newTodo) => {
+        // Ajouter la nouvelle tâche dans le signal 'todos'
+        this.todos.update(todos => [newTodo, ...todos]);
+        
+        // Réinitialiser le champ d'entrée après création
+        inputTodo.value = '';
+        inputTodo.focus();
       });
-      return todos;
-    })
+    }
   }
 
+  editTodo(todo: Todo) {
+    todo.editable = !todo.editable;
+
+    if (!todo.editable) {
+      this.todoService.updateTodo(todo);
+    }
+  }
+
+  deleteTodo(todo: Todo) {
+    this.todoService.deleteTodo(todo.id);
+  }
 }
