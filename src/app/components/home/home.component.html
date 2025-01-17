@@ -4,8 +4,9 @@
   <div>
     <label for="name">Nom d'utilisateur:</label>
     <br />
-    <input type="text" name="name" ngModel required />
+    <input type="text" name="name" [(ngModel)]="name" required />
   </div>
   <br />
   <button type="submit">Se connecter</button>
 </form>
+{{ errorMessage }}

@@ -4,13 +4,19 @@
       "id": "1",
       "name": "Coco",
       "description": "Un gars sympa",
-      "admin": true
+      "admin": false
     },
     {
       "id": "2",
       "name": "Jaco",
       "description": "Un type cool",
       "admin": true
+    },
+    {
+      "id": "3",
+      "name": "Pedro",
+      "description": "Un fieffé coquin",
+      "admin": false
     }
   ],
   "todos": [
