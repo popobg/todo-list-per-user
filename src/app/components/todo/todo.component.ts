@@ -75,16 +75,12 @@ export class TodoComponent implements OnInit {
   }
 
   // Méthode pour créer une nouvelle tâche
-  createTodo(event: KeyboardEvent, inputTodo: HTMLInputElement): void {
+  createTodo(event: KeyboardEvent, txt: string): void {
     if (event.key === 'Enter') {
       // Créer la tâche via le service
-      this.todoService.createTodo({ txt: inputTodo.value }, this.currentUserId).subscribe((newTodo) => {
+      this.todoService.createTodo({ txt }, this.currentUserId).subscribe((newTodo) => {
         // Ajouter la nouvelle tâche dans le signal 'todos'
         this.todos.update(todos => [newTodo, ...todos]);
-        
-        // Réinitialiser le champ d'entrée après création
-        inputTodo.value = '';
-        inputTodo.focus();
       });
     }
   }
