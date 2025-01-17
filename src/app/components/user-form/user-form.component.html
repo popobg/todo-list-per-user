@@ -1,1 +1,16 @@
-<p>user-form works!</p>
+<h2>Création d'un utilisateur :</h2>
+<form #userForm (ngSubmit)="onSubmit(userForm)" class="user-form">
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label for="name">Name</mat-label>
+        <input matInput type="text" formControlName="name" placeholder="Enter your name" required id="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+        <mat-label for="description">Description</mat-label>
+        <textarea matInput rows="3" formControlName="description" placeholder="Enter a description" required id="description"></textarea>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="admin" class="form-checkbox">Admin</mat-checkbox>
+
+    <button mat-stroked-button type="submit">Ajouter</button>
+</form>
