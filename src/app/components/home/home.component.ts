@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
+import { UserFormComponent } from '../user-form/user-form.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [UserFormComponent],
   templateUrl: './home.component.html',
-  styles: ``
+  styles: ``,
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}
