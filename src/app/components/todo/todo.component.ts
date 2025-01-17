@@ -3,6 +3,7 @@ import { Todo, Todos } from '../../models/todo';
 import { TodoService } from '../../services/todo.service';
 import { FormsModule } from '@angular/forms';
 import { RouterLink, RouterOutlet } from '@angular/router';
+
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -11,6 +12,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-todo',
@@ -36,18 +39,32 @@ import {MatCardModule} from '@angular/material/card';
   `
 })
 export class TodoComponent implements OnInit {
-  todoService = inject(TodoService);
+  
   todos = signal<Todos>([]);
-  userTodos = signal<Todos>([]);
   txt = signal<string>('');
   showTasks: boolean = false;
-  currentUserId = '1'; // Exemple : Utilisateur connecté avec l'ID '1'
-
+  todoService = inject(TodoService);
+  userTodos = signal<Todos>([]);
+  currentUserId = '1';
+  
   ngOnInit(): void {
     this.todoService.findAll().subscribe((data) => {
       this.todos.set(data);  // Mettre à jour le signal avec les tâches
     });
   }
+  showTask() {
+    this.showTasks = !this.showTasks;
+  }
+  
+  completeTask(id: string) {
+    this.todos.update(todos => {
+      const task = todos.find(t => t.id === id);
+      if (task) task.done = !task.done;
+      return todos;
+    })
+  }
+
+
 
   showTask() {
     this.showTasks = !this.showTasks;

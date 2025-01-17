@@ -1,1 +1,26 @@
-<p>todo works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-form-field>
+      <mat-label>Tâche</mat-label>
+      <input matInput placeholder="La tâche à effectuer..." name="txt" [(ngModel)]="txt">
+      <button mat-stroked-button (click)="addTask(txt())">Ajouter</button>
+      <button mat-stroked-button (click)="showTask()">Voir les tâches</button>
+    </mat-form-field>
+  </mat-card-header>
+  <mat-card-content>
+  @if (showTasks) {
+  <mat-list>
+    @for (task of todos(); track $index) {
+    <mat-list-item>
+      <div [class.done]="task.done">
+        {{ task.txt }}
+        <mat-checkbox [checked]="task.done" (change)="completeTask(task.id)"></mat-checkbox>
+        <button mat-stroked-button (click)="removeTask(task.id)">Supprimer</button>
+      </div>
+    </mat-list-item>
+    }
+  </mat-list>
+  }
+  </mat-card-content>
+</mat-card>
+
