@@ -18,11 +18,14 @@ export class UserService {
     }
 
     findByName(name: string): Observable<User> {
-        return this.http.get<User>(`http://localhost:3000/users/${name}`);
+        return this.http.get<User>(`http://localhost:3000/users?name=${name}`);
     }
 
-    createUser(newUser: User): void {
-        this.http.post<User>('http://localhost:3000/users', newUser);
+    createUser(newUser: Partial<User>): void {
+        this.http.post<User>('http://localhost:3000/users', {
+            ...newUser,
+            id: crypto.randomUUID()
+        });
     }
 
     updateUser(updateUser: User): void {
